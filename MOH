@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MURSHID</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+        margin-top: 20px;
+  }
+  .item {
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.7s ease;
+  }
+  .item:hover {
+    transform: translateY(-10px);
+  }
+  .question {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  .hidden {
+    display: none;
+  }
+  .random-text, .link {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="question" id="question1">What is the problem?</div>
+
+
+<div class="container" id="delivery">
+  <div class="item" onclick="chooseOption('delivery')">Delivery</div>
+</div>
+
+<div class="container hidden" id="late">
+  <div class="item" onclick="showResult('the package is late', 'delivery late')">Late</div>
+</div>
+
+<div class="container hidden" id="damaged">
+  <div class="item" onclick="showResult('the package is damaged', 'delivery damaged')">Damaged</div>
+</div>
+
+<div class="container" id="Payment">
+  <div class="item" onclick="chooseOption('Payment')">Payment</div>
+</div>
+
+<div class="container hidden" id="PaymentRefund">
+  <div class="item" onclick="showResult('the payment is Refund', 'Refundtext')">Refund</div>
+</div>
+
+<div class="container hidden" id="PaymentOverdue">
+  <div class="item" onclick="showResult('the payment is Overdue', 'Overduetext')">Overdue</div>
+</div>
+
+<div class="container hidden" id="result">
+  <!-- This will be populated after the user makes a selection -->
+</div>
+
+<div class="random-text link hidden" id="delivery late">
+  <p>Late</p>
+  <a href="#">Link 1</a> | <a href="#">Link 2</a>
+</div>
+
+<div class="random-text link hidden" id="delivery damaged">
+  <p>Damaged</p>
+  <a href="#">Link 3</a> | <a href="#">Link 4</a>
+</div>
+
+<div class="random-text link hidden" id="Refundtext">
+  <p>Refund</p>
+  <a href="#">Link 5</a> | <a href="#">Link 6</a>
+</div>
+
+<div class="random-text link hidden" id="Overduetext">
+  <p>Overdue</p>
+  <a href="#">Link 7</a> | <a href="#">Link 8</a>
+</div>
+
+<div class="container" id="cancel">
+  <div class="item" onclick="chooseOption('cancel')">cancel</div>
+</div>
+
+<div class="container hidden" id="wrongitem">
+  <div class="item" onclick="showResult('wrongitem', 'wrongitemtext')">wrongitem</div>
+</div>
+
+<div class="random-text link hidden" id="wrongitemtext">
+  <p>wrong item</p>
+  <a href="#">Link 9</a> | <a href="#">Link 10</a>
+</div>
+
+<div class="container hidden" id="noneed">
+  <div class="item" onclick="showResult('noneed', 'noneedtext')">no need</div>
+</div>
+
+<div class="random-text link hidden" id="noneedtext">
+  <p>no need for item anymore</p>
+  <a href="#">Link 11</a> | <a href="#">Link 12</a>
+</div>
+
+<div class="container" id="ahmad">
+  <div class="item" onclick="chooseOption('ahmad')">ahmad</div>
+</div>
+
+<div class="container hidden" id="mohamed">
+  <div class="item" onclick="showResult('mohamed', 'mohamedtext')">moh</div>
+</div>
+<div class="random-text link hidden" id="mohamedtext">
+  <p>moh</p>
+  <a href="#">Link 18</a> | <a href="#">Link 16</a>
+</div>
+
+
+
+<script>
+function chooseOption(decision) {
+    document.getElementById('question1').innerText = "ssssssssss";
+    document.getElementById('delivery').classList.add('hidden');
+    document.getElementById('late').classList.add('hidden');
+    document.getElementById('damaged').classList.add('hidden');
+    document.getElementById('Payment').classList.add('hidden');
+    document.getElementById('PaymentRefund').classList.add('hidden');
+    document.getElementById('PaymentOverdue').classList.add('hidden');
+    document.getElementById('cancel').classList.add('hidden');
+    document.getElementById('wrongitem').classList.add('hidden');
+    document.getElementById('noneed').classList.add('hidden');
+    document.getElementById('ahmad').classList.add('hidden');
+    document.getElementById('mohamed').classList.add('hidden');
+
+
+    if (decision === 'delivery') {
+        document.getElementById('late').classList.remove('hidden');
+        document.getElementById('damaged').classList.remove('hidden');
+    } else if (decision === 'Payment') {
+        document.getElementById('PaymentRefund').classList.remove('hidden');
+        document.getElementById('PaymentOverdue').classList.remove('hidden');
+    }
+        else if (decision === 'cancel'){
+          document.getElementById('wrongitem').classList.remove('hidden');
+          document.getElementById('noneed').classList.remove('hidden');
+        }
+        else if (decision === 'ahmad'){
+          document.getElementById('mohamed').classList.remove('hidden');
+        }
+}
+
+function showResult(message, elementId) {
+    document.getElementById('question1').innerText = message;
+    document.getElementById('delivery').classList.add('hidden');
+    document.getElementById('late').classList.add('hidden');
+    document.getElementById('damaged').classList.add('hidden');
+    document.getElementById('result').classList.add('hidden');
+    document.getElementById(elementId).classList.remove('hidden');
+    document.getElementById('PaymentRefund').classList.add('hidden');
+    document.getElementById('PaymentOverdue').classList.add('hidden');
+    document.getElementById('cancel').classList.add('hidden');
+    document.getElementById('wrongitem').classList.add('hidden');
+    document.getElementById('noneed').classList.add('hidden');
+    document.getElementById('ahmad').classList.add('hidden');
+    document.getElementById('mohamed').classList.add('hidden');
+  }
+  
+
+</script>
+</body>
+</html>
+
+   
